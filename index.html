@@ -29,6 +29,7 @@
             id="firstName"
             required
             autofocus
+            maxlength="15"
             oninput="autoCapitalize()"
           />
           <input
@@ -38,6 +39,7 @@
             id="lastName"
             required
             autofocus
+            maxlength="15"
             oninput="autoCapitalize()"
           />
           <input
@@ -45,9 +47,10 @@
             type="number"
             placeholder="Mobile Number"
             id="number"
-            autofocus
             required
+            autofocus
           />
+          <!-- not working -->
           <input
             class="form__input"
             type="text"
@@ -55,7 +58,8 @@
             id="address"
             required
             autofocus
-            autocapitalize="words"
+            maxlength="25"
+            oninput="autoCapitalize()"
           />
           <input
             class="form__input"
@@ -64,6 +68,7 @@
             id="email"
             required
             autofocus
+            maxlength="25"
           />
           <button class="btn form__button" type="submit" id="btnAdd">Submit</button>
         </form>

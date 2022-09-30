@@ -4,6 +4,9 @@ function autoCapitalize () {
 
 	let lastName = document.getElementById("lastName")
 	lastName.value=lastName.value.toUpperCase();
+
+	let address = document.getElementById("address")
+	address.value=address.value.toUpperCase();
 }
 $(document).ready(function () {
 
