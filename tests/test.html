@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		HTML | autocapitalize Attribute
+	<input>
+	</title>
+</head>
+
+<body style="text-align:center">
+
+	<h1 style="color: green;">
+		GeeksforGeeks
+	</h1>
+
+	<h2>
+		HTML | autocapitalize Attribute
+		with <input> Tag
+	</h2>
+
+	Name:
+	<input type="text"  id="ok"  autofocus  oninput="capitalize()">
+	<br><br>
+
+	<!-- Assign id to the Button. -->
+	<button id="GFG">
+		Submit
+	</button>
+	<br>
+</body>
+<script>
+	function capitalize () {
+		let x = document.getElementById("ok")
+		x.value=x.value.toUpperCase();
+	}
+</script>
+</html>

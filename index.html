@@ -29,7 +29,7 @@
             id="firstName"
             required
             autofocus
-            autocapitalize="words"
+            oninput="autoCapitalize()"
           />
           <input
             class="form__input"
@@ -38,7 +38,7 @@
             id="lastName"
             required
             autofocus
-            autocapitalize="words"
+            oninput="autoCapitalize()"
           />
           <input
             class="form__input"
@@ -65,7 +65,7 @@
             required
             autofocus
           />
-          <button class="form__button" type="submit" id="btnAdd">Submit</button>
+          <button class="btn form__button" type="submit" id="btnAdd">Submit</button>
         </form>
       </div>
       <div class="container">
