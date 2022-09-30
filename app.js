@@ -8,10 +8,6 @@ $(document).ready(function () {
 		let email = $("#email").val().trim();
 
 		if (firstName != "" && lastName != "" && number != "" && address != "" && email != "") {
-			// debugger;
-			if ($("tblData tbody").children().children().length == 1) {
-				$("#tblData tbody").html("");
-			}
 			let serialNumber = $("#tblData tbody").children().length + 1;
 
 			// creating dynamic html string
