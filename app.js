@@ -1,13 +1,38 @@
-function autoCapitalize () {
+function autoCapitalize() {
 	let firstName = document.getElementById("firstName")
-	firstName.value=firstName.value.toUpperCase();
+	firstName.value = firstName.value.toUpperCase();
 
 	let lastName = document.getElementById("lastName")
-	lastName.value=lastName.value.toUpperCase();
+	lastName.value = lastName.value.toUpperCase();
 
 	let address = document.getElementById("address")
-	address.value=address.value.toUpperCase();
+	address.value = address.value.toUpperCase();
 }
+
+function lettersOnly(input) {
+	let regex = /[^a-z],[^A-Z]/g;
+	input.value = input.value.replace(regex,"");
+}
+
+function numbersOnly(input) {
+	let regex = /[^0-9]/g;
+	input.value = input.value.replace(regex,"");
+}
+
+function validateEmail() {
+	let emailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+	// Disabled the button upon input
+	let button = document.getElementById("btnAdd")
+	button.disabled = true;
+
+	// enabled the button once the input match the email format
+	let x = document.getElementById("email")
+	if (x.value.match(emailFormat)) {
+		button.disabled = false
+	}
+}
+
 $(document).ready(function () {
 
 	$("#btnAdd").click(function () {
@@ -39,6 +64,6 @@ $(document).ready(function () {
 			$(".btn__delete").click(function () {
 				$(this).parent().parent().remove();
 			});
-		} 
+		}
 	})
 })

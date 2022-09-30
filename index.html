@@ -31,6 +31,7 @@
             autofocus
             maxlength="15"
             oninput="autoCapitalize()"
+            onkeyup="lettersOnly(this)"
           />
           <input
             class="form__input"
@@ -41,6 +42,7 @@
             autofocus
             maxlength="15"
             oninput="autoCapitalize()"
+            onkeyup="lettersOnly(this)"
           />
           <input
             class="form__input"
@@ -49,8 +51,8 @@
             id="number"
             required
             autofocus
+            oninput="numbersOnly(this)"
           />
-          <!-- not working -->
           <input
             class="form__input"
             type="text"
@@ -60,6 +62,7 @@
             autofocus
             maxlength="25"
             oninput="autoCapitalize()"
+            onkeyup="lettersOnly(this)"
           />
           <input
             class="form__input"
@@ -68,9 +71,15 @@
             id="email"
             required
             autofocus
-            maxlength="25"
+            oninput="validateEmail()"
           />
-          <button class="btn form__button" type="submit" id="btnAdd">Submit</button>
+          <button
+            class="btn form__button"
+            type="submit"
+            id="btnAdd"
+          >
+            Submit
+          </button>
         </form>
       </div>
       <div class="container">
