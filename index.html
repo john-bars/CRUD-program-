@@ -14,61 +14,71 @@
   </head>
   <body>
     <main>
-      <form class="form" id="input">
-        <input
-          class="form__input"
-          type="text"
-          placeholder="First Name"
-          id="firstName"
-          required
-          autofocus
-          autocapitalize="words"
-        />
-        <input
-          class="form__input"
-          type="text"
-          placeholder="Last Name"
-          id="lastName"
-          required
-          autofocus
-          autocapitalize="words"
-        />
-        <input
-          class="form__input"
-          type="number"
-          placeholder="Mobile Number"
-          id="number"
-          autofocus
-          required
-        />
-        <input
-          class="form__input"
-          type="text"
-          placeholder="Address"
-          id="address"
-          required
-          autofocus
-          autocapitalize="words"
-        />
-        <input
-          class="form__input"
-          type="email"
-          placeholder="Email"
-          id="email"
-          required
-          autofocus
-        />
-        <button class="form__button" type="submit" id="btnAdd">Submit</button>
-      </form>
       <div class="container">
-        <table id="tblData" >
+        <h1 class="form__title">Create Account</h1>
+        <form
+          class="form"
+          id="input"
+          onsubmit="event.preventDefault(); onFormSubmit();"
+          autocomplete="off"
+        >
+          <input
+            class="form__input"
+            type="text"
+            placeholder="First Name"
+            id="firstName"
+            required
+            autofocus
+            autocapitalize="words"
+          />
+          <input
+            class="form__input"
+            type="text"
+            placeholder="Last Name"
+            id="lastName"
+            required
+            autofocus
+            autocapitalize="words"
+          />
+          <input
+            class="form__input"
+            type="number"
+            placeholder="Mobile Number"
+            id="number"
+            autofocus
+            required
+          />
+          <input
+            class="form__input"
+            type="text"
+            placeholder="Address"
+            id="address"
+            required
+            autofocus
+            autocapitalize="words"
+          />
+          <input
+            class="form__input"
+            type="email"
+            placeholder="Email"
+            id="email"
+            required
+            autofocus
+          />
+          <button class="form__button" type="submit" id="btnAdd">Submit</button>
+        </form>
+      </div>
+      <div class="container">
+        <table class="table" id="tblData">
           <thead>
-            <tr>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Number</th>
-              <th>Address</th>
-              <th>Email</th>
+            <tr class="table__layout">
+              <th class="layout">Serial Number</th>
+              <th class="layout">First Name</th>
+              <th class="layout">Last Name</th>
+              <th class="layout">Number</th>
+              <th class="layout">Address</th>
+              <th class="layout">Email</th>
+              <th class="layout"></th>
             </tr>
           </thead>
           <tbody></tbody>
