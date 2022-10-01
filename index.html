@@ -30,8 +30,8 @@
             required
             autofocus
             maxlength="15"
-            oninput="autoCapitalize()"
-            onkeyup="lettersOnly(this)"
+            oninput="autoCapitalize(this)"
+            onkeyup="nameInput(this)"
           />
           <input
             class="form__input"
@@ -41,17 +41,18 @@
             required
             autofocus
             maxlength="15"
-            oninput="autoCapitalize()"
-            onkeyup="lettersOnly(this)"
+            oninput="autoCapitalize(this)"
+            onkeyup="nameInput(this)"
           />
           <input
             class="form__input"
-            type="number"
+            type="tel"
             placeholder="Mobile Number"
             id="number"
             required
             autofocus
-            oninput="numbersOnly(this)"
+            maxlength="13"
+            onkeyup="phoneInput(this)"
           />
           <input
             class="form__input"
@@ -61,8 +62,8 @@
             required
             autofocus
             maxlength="25"
-            oninput="autoCapitalize()"
-            onkeyup="lettersOnly(this)"
+            oninput="autoCapitalize(this)"
+            onkeyup="addressCharacters(this)"
           />
           <input
             class="form__input"
@@ -71,13 +72,9 @@
             id="email"
             required
             autofocus
-            oninput="validateEmail()"
+            oninput="validateEmail(this)"
           />
-          <button
-            class="btn form__button"
-            type="submit"
-            id="btnAdd"
-          >
+          <button class="btn form__button" type="submit" id="btnAdd">
             Submit
           </button>
         </form>
