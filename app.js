@@ -1,22 +1,47 @@
 function autoCapitalize() {
-	let firstName = document.getElementById("firstName")
-	firstName.value = firstName.value.toUpperCase();
+	let firstNameInput = document.getElementById("firstName");
+	firstName.value = firstNameInput.value.replace(
+		/(^\w{1})|(\s+\w{1})/g,   // "^" = first string; "\w{1}" = first letter of the word
+		(letter) => letter.toUpperCase()
+	);
 
-	let lastName = document.getElementById("lastName")
-	lastName.value = lastName.value.toUpperCase();
+	let lastNameInput = document.getElementById("lastName");
+	lastName.value = lastNameInput.value.replace(
+		/(^\w{1})|(\s+\w{1})/g,  // "|" = or ; "\s+" = white space between the words
+		(letter) => letter.toUpperCase()
+	); 
 
-	let address = document.getElementById("address")
-	address.value = address.value.toUpperCase();
+	let addressInput = document.getElementById("address");
+	address.value = addressInput.value.replace(
+		/(^\w{1})|(\s+\w{1})/g,
+		(letter) => letter.toUpperCase()
+	);
 }
 
-function lettersOnly(input) {
-	let regex = /[^a-z],[^A-Z]/g;
-	input.value = input.value.replace(regex,"");
+function nameInput(input) {
+	let regex = /([^a-zA-Z\s])/g;
+	// let regex = /^(\w+\s)*\w+$/g;
+	input.value = input.value.replace(regex, "");
 }
 
-function numbersOnly(input) {
-	let regex = /[^0-9]/g;
-	input.value = input.value.replace(regex,"");
+function addressCharacters(input) {
+	let regex = /([^a-zA-Z,.\s])/g;
+	input.value = input.value.replace(regex, "");
+}
+
+function phoneInput(input) {
+	let regex = /[^0-9+]/g; //do global search for characters NOT inside "[]"
+	input.value = input.value.replace(regex, "");
+	
+	// Disabled the button upon input
+	let button = document.getElementById("btnAdd")
+	button.disabled = true;
+
+	let x = document.getElementById("number")
+	if (x.value.length >= 10) { // minLength
+		button.disabled = false
+		// console.log("button disabled")
+	}
 }
 
 function validateEmail() {
@@ -30,6 +55,9 @@ function validateEmail() {
 	let x = document.getElementById("email")
 	if (x.value.match(emailFormat)) {
 		button.disabled = false
+		console.log("disabled")
+	} else {
+		// alert ("input valid email")
 	}
 }
 

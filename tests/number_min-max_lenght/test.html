@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input
+      class="input1"
+      type="text"
+      placeholder="number1"
+      id="number1"
+      required
+      autofocus
+      minlength="10"
+      maxlength="13"
+      pattern="\d*"
+      oninput="numbersOnly(this)"
+    />
+		<input
+		class="input2"
+		type="number"
+		placeholder="number2"
+		id="number2"
+		required
+		autofocus
+		minlength="10"
+		maxlength="13"
+		oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+    />
+    <input
+      class="input3"
+      type="text"
+      placeholder="number3"
+      id="number3"
+      required
+      autofocus
+			onkeyup="numbersOnly(this)"
+    />
+    <button class="btn1" type="submit" id="btn1">Submit</button>
+  </body>
+  <script src="./test.js"></script>
+</html>
