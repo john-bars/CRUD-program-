@@ -3,7 +3,6 @@ body {
   --color-primary-dark: #007f67;
   --color-secondary: #252c6a;
   --color-error: #cc3333;
-  --color-success: #4bb544;
   --border-radius: 4px;
   --color-delete: red;
 
@@ -16,7 +15,7 @@ body {
 .container {
   width: 90vw;
   min-width: 400px;
-  margin: 1rem;
+  margin: 1rem 0;
   padding: 2rem;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
   border-radius: var(--border-radius);
@@ -45,7 +44,7 @@ body {
 }
 
 .form__input {
-  width: 220px;
+  width: 225px;
   text-align: center;
   padding: 0.75rem;
   box-sizing: border-box;
@@ -62,6 +61,7 @@ body {
 }
 
 .form__button {
+  width: 225px;
   padding: 0.75rem 2rem;
   font-weight: bold;
   font-size: 1.1rem;
@@ -94,35 +94,35 @@ input[type=number] {
   background: #ffffff;
 }
 
-.table__layout {
-  display: flex;
-}
-
-.layout {
-  width: 160px;
-  display: flex;
+.table__header,
+td {
+  text-align: center;
+  font-size: 1.2vmax;
+  width: 12vw;
   justify-content: center;
   border: 1px solid var(--color-primary);
   border-radius: 1px;
   padding: 0.25rem 0;
+}
+
+.thead {
+  display: flex;
+}
+
+tbody {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 tr {
   display: flex;
-}
-
-td {
-  width: 160px;
-  display: flex;
-  flex-direction: row;
   justify-content: center;
-  align-items: center;
-  border: 1px solid var(--color-primary);
-  border-radius: 1px;
-  padding: 0.25rem 0;
+  align-content: center;
 }
 
 .btn__edit {
+  font-size: 1.2vmax;
   font-weight: bold;
   color: #ffffff;
   border: 1px solid #ffffff;
@@ -132,6 +132,7 @@ td {
 }
 
 .btn__delete {
+  font-size: 1.2vmax;
   font-weight: bold;
   color: #ffffff;
   border: 1px solid red;

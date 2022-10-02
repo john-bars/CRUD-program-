@@ -7,9 +7,9 @@ function autoCapitalize() {
 
 	let lastNameInput = document.getElementById("lastName");
 	lastName.value = lastNameInput.value.replace(
-		/(^\w{1})|(\s+\w{1})/g,  // "|" = or ; "\s+" = white space between the words
+		/(^\w{1})|(\s+\w{1})/g,  // "|" = or ; "\s+" = white spaces between the words
 		(letter) => letter.toUpperCase()
-	); 
+	);
 
 	let addressInput = document.getElementById("address");
 	address.value = addressInput.value.replace(
@@ -19,33 +19,41 @@ function autoCapitalize() {
 }
 
 function nameInput(input) {
-	let regex = /([^a-zA-Z\s])/g;
-	// let regex = /^(\w+\s)*\w+$/g;
+	let regex = /[^a-zA-Z ]/g;
 	input.value = input.value.replace(regex, "");
 }
 
 function addressCharacters(input) {
-	let regex = /([^a-zA-Z,.\s])/g;
-	input.value = input.value.replace(regex, "");
+	let regex = /([^a-zA-Z,.])/g;
+	input.value = input.value.replace(regex, "").replace (/\s+/, '');
 }
 
 function phoneInput(input) {
-	let regex = /[^0-9+]/g; //do global search for characters NOT inside "[]"
-	input.value = input.value.replace(regex, "");
-	
+	let phone = document.querySelector("#number");
+
 	// Disabled the button upon input
 	let button = document.getElementById("btnAdd")
 	button.disabled = true;
-
-	let x = document.getElementById("number")
-	if (x.value.length >= 10) { // minLength
+	if (phone.value.length >= 10) { // minLength
 		button.disabled = false
-		// console.log("button disabled")
 	}
+	
+	input.value = phone.value.replace(/\D/g, "")
+		.replace(/(\d{1,4})(\d{1,3})?(\d{1,4})?/g, function (txt, p1, p2, p3) {
+			if (p3) {
+				return `${p1} ${p2} ${p3}`;
+			}
+			else if (p2) {
+				return `${p1} ${p2}`;
+			} 
+			else if (p1) {
+				return `${p1}`;
+			} 
+		});
 }
 
-function validateEmail() {
-	let emailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+function validateEmail(input) {
+	let emailFormat = /^[a-zA-Z][a-zA-Z0-9.-_]+@[a-z]+\.+[a-z]{2,4}$/;
 
 	// Disabled the button upon input
 	let button = document.getElementById("btnAdd")
@@ -55,7 +63,7 @@ function validateEmail() {
 	let x = document.getElementById("email")
 	if (x.value.match(emailFormat)) {
 		button.disabled = false
-		console.log("disabled")
+		console.log("button disabled")
 	} else {
 		// alert ("input valid email")
 	}
@@ -64,17 +72,11 @@ function validateEmail() {
 $(document).ready(function () {
 
 	$("#btnAdd").click(function () {
-		// let firstName = $("#firstName").val().trim();
-		// let lastName = $("#lastName").val().trim();
-		// let number = $("#number").val().trim();
-		// let address = $("#address").val().trim();
-		// let email = $("#email").val().trim();
-
-		let firstName = $("#firstName").val();
-		let lastName = $("#lastName").val();
-		let number = $("#number").val();
-		let address = $("#address").val();
-		let email = $("#email").val();
+		let firstName = $("#firstName").val().trim();
+		let lastName = $("#lastName").val().trim();
+		let number = $("#number").val().trim();
+		let address = $("#address").val().trim();
+		let email = $("#email").val().trim();
 
 		if (firstName != "" && lastName != "" && number != "" && address != "" && email != "") {
 			let serialNumber = $("#tblData tbody").children().length + 1;
@@ -89,9 +91,13 @@ $(document).ready(function () {
 			$("#number").val("");
 			$("#address").val("");
 			$("#email").val("");
+
+			// DELETE
 			$(".btn__delete").click(function () {
 				$(this).parent().parent().remove();
 			});
+			
+			// EDIT
 		}
 	})
 })
