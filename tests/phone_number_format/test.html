@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    Phone Number: <input type="text" id="phoneNum" maxlength="14" />
+    <script>
+      let telEl = document.querySelector("#phoneNum");
+
+      telEl.addEventListener("keyup", (e) => {
+        let val = e.target.value;
+        e.target.value = val
+          .replace(/\D/g, "")
+          .replace(/(\d{1,4})(\d{1,3})?(\d{1,3})?/g, function (txt, f, s, t) {
+            if (t) {
+              return `(${f}) ${s}-${t}`;
+            } else if (s) {
+              return `(${f}) ${s}`;
+            } else if (f) {
+              return `(${f})`;
+            }
+          });
+      });
+    </script>
+    <!-- <script>
+      var phoneNumber = "1234567899";
+      var formatted = phoneNumber.replace(
+        /(\d{1,2})(\d{1})?(\d{1,3})?(\d{1,4})?/,
+        function (_, p1, p2, p3, p4) {
+          let output = "";
+          if (p1) output = `(${p1}`;
+          if (p2) output += `${p2})`;
+          if (p3) output += ` ${p3}`;
+          if (p4) output += ` ${p4}`;
+          return output;
+        }
+      );
+    </script> -->
+  </body>
+</html>
