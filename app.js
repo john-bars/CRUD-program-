@@ -19,13 +19,13 @@ function autoCapitalize() {
 }
 
 function nameInput(input) {
-	let regex = /[^a-zA-Z ]/g;
+	let regex = /[^a-zA-Z\s]/g;
 	input.value = input.value.replace(regex, "");
 }
 
 function addressCharacters(input) {
-	let regex = /([^a-zA-Z,.])/g;
-	input.value = input.value.replace(regex, "").replace (/\s+/, '');
+	let regex = /([^a-zA-Z0-9,.-\s])/g;
+	input.value = input.value.replace(regex, "");
 }
 
 function phoneInput(input) {
