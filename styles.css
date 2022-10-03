@@ -16,7 +16,7 @@ body {
   width: 90vw;
   min-width: 400px;
   margin: 1rem 0;
-  padding: 2rem;
+  padding: 2vmax;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
   border-radius: var(--border-radius);
   background: #ffffff;

@@ -1,55 +1,28 @@
 function autoCapitalize() {
-	let firstNameInput = document.getElementById("firstName");
-	firstName.value = firstNameInput.value.replace(
-		/(^\w{1})|(\s+\w{1})/g,   // "^" = first string; "\w{1}" = first letter of the word
-		(letter) => letter.toUpperCase()
-	);
-
-	let lastNameInput = document.getElementById("lastName");
-	lastName.value = lastNameInput.value.replace(
-		/(^\w{1})|(\s+\w{1})/g,  // "|" = or ; "\s+" = white spaces between the words
-		(letter) => letter.toUpperCase()
-	);
-
-	let addressInput = document.getElementById("address");
-	address.value = addressInput.value.replace(
-		/(^\w{1})|(\s+\w{1})/g,
-		(letter) => letter.toUpperCase()
-	);
+	let inputLayout = /(^\w{1})|(\s\w{1})/g;
+	firstName.value = $("#firstName").val().replace(inputLayout, (letter) => letter.toUpperCase());
+	lastName.value = $("#lastName").val().replace(inputLayout, (letter) => letter.toUpperCase());
+	address.value = $("#address").val().replace(inputLayout, (letter) => letter.toUpperCase());
+	console.log($('#firstName').val().length)
 }
 
 function nameInput(input) {
 	let regex = /[^a-zA-Z\s]/g;
-	input.value = input.value.replace(regex, "");
+	return input.value = input.value.replace(regex, "");
 }
 
 function addressCharacters(input) {
 	let regex = /([^a-zA-Z0-9,.-\s])/g;
-	input.value = input.value.replace(regex, "");
+	return input.value = input.value.replace(regex, "");
 }
 
-function phoneInput(input) {
-	let phone = document.querySelector("#number");
-
-	// Disabled the button upon input
-	let button = document.getElementById("btnAdd")
-	button.disabled = true;
-	if (phone.value.length >= 10) { // minLength
-		button.disabled = false
-	}
-	
-	input.value = phone.value.replace(/\D/g, "")
-		.replace(/(\d{1,4})(\d{1,3})?(\d{1,4})?/g, function (txt, p1, p2, p3) {
-			if (p3) {
-				return `${p1} ${p2} ${p3}`;
-			}
-			else if (p2) {
-				return `${p1} ${p2}`;
-			} 
-			else if (p1) {
-				return `${p1}`;
-			} 
-		});
+function phoneNumberFormat(outputNumber) {
+	let phoneNumber = document.querySelector("#number");
+	let button = $("#btnAdd");
+	(phoneNumber.value.length >= 13) ? button.disabled = false : button.disabled = true;
+	// console.log(phoneNumber.value.length)
+	outputNumber.value = phoneNumber.value.replace(/\D/g, "")
+		.replace(/(\d{1,4})(\d{1,3})?(\d{1,4})?/g, '$1 $2 $3');
 }
 
 function validateEmail(input) {
@@ -96,7 +69,7 @@ $(document).ready(function () {
 			$(".btn__delete").click(function () {
 				$(this).parent().parent().remove();
 			});
-			
+
 			// EDIT
 		}
 	})
