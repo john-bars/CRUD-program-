@@ -29,9 +29,9 @@
             id="firstName"
             required
             autofocus
-            maxlength="15"
+            maxlength="20"
             oninput="autoCapitalize(this)"
-            onclick="nameInput(this)"
+            onkeyup="nameInput(this)"
           />
           <input
             class="form__input"
@@ -40,7 +40,7 @@
             id="lastName"
             required
             autofocus
-            maxlength="15"
+            maxlength="20"
             oninput="autoCapitalize(this)"
             onkeyup="nameInput(this)"
           />
@@ -61,7 +61,7 @@
             id="address"
             required
             autofocus
-            maxlength="25"
+            maxlength="50"
             oninput="autoCapitalize(this)"
             onkeyup="addressCharacters(this)"
           />
@@ -72,7 +72,7 @@
             id="email"
             required
             autofocus
-            oninput="validateEmail(this)"
+            oninput="validateEmail()"
           />
           <button class="btn form__button" type="submit" id="btnAdd">
             Submit
