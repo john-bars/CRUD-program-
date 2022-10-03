@@ -12,34 +12,30 @@ function nameInput(input) {
 }
 
 function addressCharacters(input) {
-	let regex = /([^a-zA-Z0-9,.-\s])/g;
+	let regex = /([^a-zA-Z0-9-,.\s])/g;
 	return input.value = input.value.replace(regex, "");
 }
 
 function phoneNumberFormat(outputNumber) {
 	let phoneNumber = document.querySelector("#number");
-	let button = $("#btnAdd");
+	// let phoneNumber = $("#number");
+	let button = document.getElementById("btnAdd");
+	// let button = $("#btnAdd");
+
 	(phoneNumber.value.length >= 13) ? button.disabled = false : button.disabled = true;
-	// console.log(phoneNumber.value.length)
 	outputNumber.value = phoneNumber.value.replace(/\D/g, "")
 		.replace(/(\d{1,4})(\d{1,3})?(\d{1,4})?/g, '$1 $2 $3');
 }
 
-function validateEmail(input) {
-	let emailFormat = /^[a-zA-Z][a-zA-Z0-9.-_]+@[a-z]+\.+[a-z]{2,4}$/;
-
-	// Disabled the button upon input
-	let button = document.getElementById("btnAdd")
-	button.disabled = true;
+function validateEmail() {
+	let emailFormat = /^[a-zA-Z](?:[a-zA-Z0-9]*[-_.])*[a-zA-Z0-9]+@[a-z]{2,}(?:\-[a-z]{2,})*\.[a-z]{2,4}$/;
+	const button = document.getElementById("btnAdd");
+	// const button = $("#btnAdd");
+	let email = document.getElementById("email");
+	// let email = $("#email");
 
 	// enabled the button once the input match the email format
-	let x = document.getElementById("email")
-	if (x.value.match(emailFormat)) {
-		button.disabled = false
-		console.log("button disabled")
-	} else {
-		// alert ("input valid email")
-	}
+	return (email.value.match(emailFormat)) ? button.disabled = false : button.disabled = true;
 }
 
 $(document).ready(function () {
