@@ -1,19 +1,18 @@
-function autoCapitalize() {
+function nameInputFormat(input) {
+	// let inputLayout = /[A-Z][a-z]*(\s[A-Z][a-z]+)*/g;
 	let inputLayout = /(^\w{1})|(\s\w{1})/g;
-	firstName.value = $("#firstName").val().replace(inputLayout, (letter) => letter.toUpperCase());
-	lastName.value = $("#lastName").val().replace(inputLayout, (letter) => letter.toUpperCase());
-	address.value = $("#address").val().replace(inputLayout, (letter) => letter.toUpperCase());
-	console.log($('#firstName').val().length)
+	let regex = /([^a-zA-Z0-9\s])/g;
+	return input.value = input.value.replace(regex, "")
+		.replace(inputLayout, (letter) => letter.toUpperCase())
+		.replace(/\s+/, " ");
 }
 
-function nameInput(input) {
-	let regex = /[^a-zA-Z\s]/g;
-	return input.value = input.value.replace(regex, "");
-}
-
-function addressCharacters(input) {
+function addressInputFormat(input) {
+	let inputLayout = /(^\w{1})|(\s\w{1})/g;
 	let regex = /([^a-zA-Z0-9-,.\s])/g;
-	return input.value = input.value.replace(regex, "");
+	return input.value = input.value.replace(regex, "")
+		.replace(inputLayout, (letter) => letter.toUpperCase())
+		.replace(/\s+/, " ");
 }
 
 function phoneNumberFormat(outputNumber) {
@@ -28,7 +27,7 @@ function phoneNumberFormat(outputNumber) {
 }
 
 function validateEmail() {
-	let emailFormat = /^[a-zA-Z](?:[a-zA-Z0-9]*[-_.])*[a-zA-Z0-9]+@[a-z]{2,}(?:\-[a-z]{2,})*\.[a-z]{2,4}$/;
+	const emailFormat = /^[a-zA-Z](?:[a-zA-Z0-9]*[-_.])*[a-zA-Z0-9]+@[a-z]{2,}(?:\-[a-z]{2,})*\.[a-z]{2,4}$/;
 	const button = document.getElementById("btnAdd");
 	// const button = $("#btnAdd");
 	let email = document.getElementById("email");
