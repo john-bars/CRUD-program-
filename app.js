@@ -46,13 +46,19 @@ $(document).ready(function () {
 		let number = $("#number").val().trim();
 		let address = $("#address").val().trim();
 		let email = $("#email").val().trim();
+		let serialNumber = $("#tblData tbody").children().length + 1;
+		let newRecordData = "<tr><td>" + serialNumber + // creating dynamic html string
+			"</td><td>" + firstName +
+			"</td><td>" + lastName +
+			"</td><td>" + number +
+			"</td><td>" + address +
+			"</td><td>" + email +
+			"</td><td> <button class='btn btn__edit'> Edit </button>" +
+			"<button class='btn btn__delete'> Delete </button> </td></tr>";
+		console.log(serialNumber)
 
 		if (firstName != "" && lastName != "" && number != "" && address != "" && email != "") {
-			let serialNumber = $("#tblData tbody").children().length + 1;
-
-			// creating dynamic html string
-			let dynamicTr = "<tr><td>" + serialNumber + "</td><td>" + firstName + "</td><td>" + lastName + "</td><td>" + number + "</td><td>" + address + "</td><td>" + email + "</td> <td> <button class='btn btn__edit'> Edit </button><button class='btn btn__delete'> Delete </button> </td><tr>";
-			$("#tblData tbody").append(dynamicTr); //appending dynamic string to the table
+			$("#tblData tbody").append(newRecordData);
 
 			// removing the last typed data on the input tag 
 			$("#firstName").val("");
@@ -67,6 +73,17 @@ $(document).ready(function () {
 			});
 
 			// EDIT
+			$(".btn__edit").click(() => {
+				$("#firstName").val($(this).parent().parent());
+				$("#lastName").val($(this).parent().parent());
+				$("#number").val($(this).parent().parent()) ;
+				$("#address").val($(this).parent().parent()) ;
+				$("#email").val($(this).parent().parent()) ;
+			})
+
+		}
+		else {
+			return;
 		}
 	})
 })
