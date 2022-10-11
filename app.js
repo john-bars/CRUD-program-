@@ -1,5 +1,4 @@
 function nameInputFormat(input) {
-	// let inputLayout = /[A-Z][a-z]*(\s[A-Z][a-z]+)*/g;
 	const inputLayout = /(^\w{1})|(\s\w{1})/g;
 	const regex = /([^a-zA-Z\s])/g;
 	return input.value = input.value.replace(regex, "")
@@ -41,31 +40,33 @@ function validateEmail() {
 $(document).ready(function () {
 
 	$("#btnAdd").click(function () {
-		let firstName = $("#firstName").val().trim();
-		let lastName = $("#lastName").val().trim();
-		let number = $("#number").val().trim();
-		let address = $("#address").val().trim();
-		let email = $("#email").val().trim();
-		let serialNumber = $("#tblData tbody").children().length + 1;
-		let newRecordData = "<tr><td>" + serialNumber + // creating dynamic html string
-			"</td><td>" + firstName +
-			"</td><td>" + lastName +
-			"</td><td>" + number +
-			"</td><td>" + address +
-			"</td><td>" + email +
+		const firstName = $("#firstName").val().trim();
+		const lastName = $("#lastName").val().trim();
+		const number = $("#number").val().trim();
+		const address = $("#address").val().trim();
+		const email = $("#email").val().trim();
+		const serialNumber = $("#tableData tbody").children().length + 1;
+		const newRecordData = "<tr><td class='serialNumber'>" + serialNumber + // creating dynamic html string
+			"</td><td class='firstName'>" + firstName +
+			"</td><td class='lastName'>" + lastName +
+			"</td><td class='number'>" + number +
+			"</td><td class='address'>" + address +
+			"</td><td class='email'>" + email +
 			"</td><td> <button class='btn btn__edit'> Edit </button>" +
 			"<button class='btn btn__delete'> Delete </button> </td></tr>";
-		console.log(serialNumber)
 
 		if (firstName != "" && lastName != "" && number != "" && address != "" && email != "") {
-			$("#tblData tbody").append(newRecordData);
+			$("#tableData tbody").append(newRecordData);
+			formClear();
 
 			// removing the last typed data on the input tag 
-			$("#firstName").val("");
-			$("#lastName").val("");
-			$("#number").val("");
-			$("#address").val("");
-			$("#email").val("");
+			function formClear() {
+				$("#firstName").val("");
+				$("#lastName").val("");
+				$("#number").val("");
+				$("#address").val("");
+				$("#email").val("");
+			}
 
 			// DELETE
 			$(".btn__delete").click(function () {
@@ -73,14 +74,11 @@ $(document).ready(function () {
 			});
 
 			// EDIT
-			$(".btn__edit").click(() => {
-				$("#firstName").val($(this).parent().parent());
-				$("#lastName").val($(this).parent().parent());
-				$("#number").val($(this).parent().parent()) ;
-				$("#address").val($(this).parent().parent()) ;
-				$("#email").val($(this).parent().parent()) ;
-			})
-
+			// $(".btn__edit").click(function () {
+			// 	const fname = $(this).parent().parent().find(".firstName").val()
+			// 	console.log(fname)
+			// 	// $("#lastName").val(fname);
+			// })
 		}
 		else {
 			return;
